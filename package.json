@@ -1,17 +1,22 @@
 {
-  "name": "hkgolden-scarper",
+  "name": "hkgolden-scraper",
   "version": "0.0.1",
   "description": "Scrap golden",
-  "main": "index.js",
+  "main": "scraper.js",
   "scripts": {
     "test": "mocha"
   },
-  "author": "Jason Yu <me@ycmjason.com> (ycmjason.com)",
+  "author": "Ryan and Jason",
+  "contributors": [
+    "Ryan Wong",
+    "Jason Yu <me@ycmjason.com> (ycmjason.com)"
+  ],
   "license": "MIT",
   "dependencies": {
-    "jquery": "^2.2.3"
+    "cheerio": "^0.20.0"
   },
   "devDependencies": {
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3"
   }
 }
