@@ -1,0 +1,14 @@
+{
+  "name": "hkgolden-scarper",
+  "version": "0.0.1",
+  "description": "Scrap golden",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Jason Yu <me@ycmjason.com> (ycmjason.com)",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^2.2.3"
+  }
+}
