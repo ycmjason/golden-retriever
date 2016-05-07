@@ -7,20 +7,20 @@ describe('#getChannels', function(){
 
   describe('using mock fetcher', function(){
 
-    it('should call fetcher.fetch is called once', function(){
+    it('should call fetcher.fetch once', function(){
       var hkgolden = new HKGolden();
 
-      // use mock fetcher
-      var mock = sinon.mock(hkgolden.fetcher);
+      // use mock fetcher/parser
+      var fetcher_mock = sinon.mock(hkgolden.fetcher);
 
       // only one fetch would be needed for channels
-      mock.expects("fetch").once().throws();
+      fetcher_mock.expects("fetch").once().throws();
 
       try{
         hkgolden.getChannels();
       }catch(e) { }
       
-      mock.verify();
+      fetcher_mock.verify();
     });
 
   });
@@ -43,6 +43,47 @@ describe('#getChannels', function(){
       return hkgolden.getChannels().then(channels => {
         assert(hasChannel(channels, 'BW'));
         assert(hasChannel(channels, 'AU'));
+      });
+
+    });
+  });
+
+});
+
+
+
+describe('#getTopics', function(){
+
+  describe('using mock fetcher', function(){
+
+    it('should call fetcher.fetch is called once', function(){
+      var hkgolden = new HKGolden();
+
+      // use mock fetcher
+      var mock = sinon.mock(hkgolden.fetcher);
+
+      // only one fetch would be needed for channels
+      mock.expects("fetch").once().throws();
+
+      try{
+        hkgolden.getTopics('BW');
+      }catch(e) { }
+      
+      mock.verify();
+    });
+
+  });
+
+  describe('using real fetcher', function(){
+    // hkg server so slow, let the tests has 7s timeout
+    this.timeout(7000);
+
+    it('should grap some real topics', function(){
+      var hkgolden = new HKGolden();
+
+      return hkgolden.getTopics('BW').then(topics => {
+        //expecting number of tpics is 30
+        assert(topics.length == 30);
       });
 
     });
